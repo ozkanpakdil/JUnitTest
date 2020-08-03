@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Docker + Config + Eureka" type="CompoundRunConfigurationType">
+    <toRun name="FeteBirdProductApplication" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

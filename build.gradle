@@ -1,0 +1,57 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'fete.bird'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
+
+compileJava {
+    options.compilerArgs += ["--enable-preview"]
+}
+tasks.withType(JavaCompile).all {
+    options.compilerArgs += ['--enable-preview']
+}
+
+repositories {
+    mavenCentral()
+}
+ext {
+    set('springCloudVersion', "Hoxton.SR6")
+    set('springDdocOpenApiVersion', '1.4.3')
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation "org.springdoc:springdoc-openapi-ui:${springDdocOpenApiVersion}"
+    implementation "org.springdoc:springdoc-openapi-ui:${springDdocOpenApiVersion}"
+//    implementation "org.springdoc:springdoc-openapi-security:${springDdocOpenApiVersion}"
+//
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+
+    compile project(':Data')
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
