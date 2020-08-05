@@ -1,2 +1,4 @@
 rootProject.name = 'fete-bird-product'
+include 'product-migration'
+include 'Data'
 
