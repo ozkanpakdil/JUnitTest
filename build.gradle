@@ -53,5 +53,6 @@ dependencyManagement {
 }
 
 test {
+    jvmArgs '--enable-preview'
     useJUnitPlatform()
 }
